@@ -1,12 +1,11 @@
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.TreeSet;
+import java.util.*;
 
-public class Zad3 {
+public class Zad4 {
     public static void main(String[] args) {
-        TreeSet<String> listaPracownikow = new TreeSet<>();
+        List<String> listaPracownikow = new ArrayList();
         int bajt;
         String pracownik = "";
 
@@ -29,6 +28,9 @@ public class Zad3 {
         System.out.println("Rozmiar listy: " + listaPracownikow.size());
         System.out.println();
 
+        //Sortowanie listy od Z do A
+        Collections.sort(listaPracownikow);
+        Collections.reverse(listaPracownikow);
 
         System.out.println("Wydrukowanie zawartości listy za pomocą zwykłego for-a");
         for (int i = 0; i < listaPracownikow.size(); i++)
