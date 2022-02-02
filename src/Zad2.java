@@ -1,15 +1,12 @@
-package Zad1;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 
-public class Main {
+public class Zad2 {
     public static void main(String[] args) {
-        List<String> listaPracownikow = new ArrayList();
+        HashSet<String> listaPracownikow = new HashSet<>();
         int bajt;
         String pracownik = "";
 
@@ -17,7 +14,8 @@ public class Main {
             do {
                 bajt = fis.read();
                 if (bajt == 13 || bajt == -1) {
-                    listaPracownikow.add(pracownik);
+                    if (!listaPracownikow.contains(pracownik))
+                        listaPracownikow.add(pracownik);
                     pracownik = "";
                     fis.skip(1);
                 } else if (bajt != -1) pracownik += (char) bajt;
@@ -34,7 +32,7 @@ public class Main {
 
         System.out.println("Wydrukowanie zawartości listy za pomocą zwykłego for-a");
         for (int i = 0; i < listaPracownikow.size(); i++)
-            System.out.println(listaPracownikow.get(i));
+            System.out.println(listaPracownikow.toArray()[i]);
         System.out.println("\n");
 
         System.out.println("Wydrukowanie zawartości listy za pomocą for each");
@@ -43,7 +41,7 @@ public class Main {
         System.out.println("\n");
 
         System.out.println("Wydrukowanie zawartości listy za pomocą interfacu Iterator");
-        Iterator<String> iter = listaPracownikow.listIterator();
+        Iterator<String> iter = listaPracownikow.iterator();
         while (iter.hasNext())
             System.out.println(iter.next());
     }
